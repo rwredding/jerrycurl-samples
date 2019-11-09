@@ -1,0 +1,2 @@
+﻿@import Jerrycurl.Mvc.Sql.SqlServer
+@* add global imports, projections and injections here *@

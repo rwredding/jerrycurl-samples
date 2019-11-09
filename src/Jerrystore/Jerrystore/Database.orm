@@ -1,0 +1,5 @@
+﻿{
+  "$schema": "https://jerrycurl.net/schema/database.json",
+  "connection": "SERVER=.;DATABASE=jerrystore;TRUSTED_CONNECTION=true",
+  "vendor": "sqlserver"
+}

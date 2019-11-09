@@ -1,0 +1,16 @@
+﻿@foreach (var v in this.M.Vals())
+{
+	INSERT INTO
+		@v.TblName()
+		(
+			@v.In().ColNames()
+		)
+		@if (v.Out().Any())
+        {
+            OUTPUT @v.Out().Cols("INSERTED").As().Props()
+        }
+        VALUES
+        (
+            @v.In().Pars()
+        );
+}
