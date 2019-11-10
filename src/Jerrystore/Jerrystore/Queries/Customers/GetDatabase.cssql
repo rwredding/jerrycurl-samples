@@ -1,0 +1,30 @@
+﻿@result Jerrystore.Views.Customers.CustomerDatabaseView
+
+@{
+    var o = this.R.Open(m => m.Orders);
+    var ol = o.Open(m => m.Lines);
+}
+
+SELECT
+    @R.Star(),
+    @R.Star(m => m.Address)
+FROM
+    @R.Tbl()
+LEFT JOIN
+    @R.Tbl(m => m.Address) ON @R.Col(m => m.Address.Id) = @R.Col(m => m.AddressId)
+
+SELECT
+    @o.Star(),
+    @o.Star(m => m.Billing)
+FROM
+    @o.Tbl()
+INNER JOIN
+    @o.Tbl(m => m.Billing) ON @o.Col(m => m.Billing.Id) = @o.Col(m => m.AddressId)
+
+SELECT
+    @ol.Star(),
+    @ol.Star(m => m.Product)
+FROM
+    @ol.Tbl()
+INNER JOIN
+    @ol.Tbl(m => m.Product) ON @ol.Col(m => m.Product.Id) = @ol.Col(m => m.ProductId)
