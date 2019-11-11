@@ -12,6 +12,7 @@ namespace Jerrystore.App
         {
             var cust = new CustomersAccessor();
             var ord = new OrdersAccessor();
+            var prod = new ProductsAccessor();
 
             var db = cust.GetDatabase();
 
@@ -38,6 +39,8 @@ namespace Jerrystore.App
             };
 
             cust.NewCustomer(newCustomer);
+            prod.ChangePrice(new[] { 1, 2 }, new[] { 200m, 100m });
+
 
             var stats = cust.GetStats(DateTime.UtcNow.AddDays(-100));
         }

@@ -1,0 +1,12 @@
+﻿@model Jerrystore.Models.Products.ProductChangePriceModel
+@project Product p
+
+@foreach (var v in this.M.Vals())
+{
+    UPDATE
+        @p.TblName()
+    SET
+        @p.ColName(m => m.Price) = @v.Par(m => m.NewPrice)
+    WHERE
+        @p.ColName(m => m.Id) = @v.Par(m => m.ProductId)
+}
