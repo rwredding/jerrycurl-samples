@@ -1,4 +1,4 @@
-# Samples
+# Jerrycurl Sample Repo
 This repository contains a set of samples for the [Jerrycurl O/R mapper](https://github.com/rwredding/jerrycurl),
 showcasing its features.
 
