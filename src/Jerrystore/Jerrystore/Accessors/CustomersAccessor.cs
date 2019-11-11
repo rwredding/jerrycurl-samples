@@ -20,5 +20,7 @@ namespace Jerrystore.Accessors
 
             return this.Query<CustomerStatsView>(model: filter);
         }
+
+        public void NewCustomer(NewCustomerModel customer) => this.Execute(customer);
     }
 }

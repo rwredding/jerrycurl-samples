@@ -1,4 +1,5 @@
 ﻿using Jerrystore.Accessors;
+using Jerrystore.Models.Customers;
 using Jerrystore.Models.Orders;
 using System;
 using System.Collections.Generic;
@@ -14,21 +15,29 @@ namespace Jerrystore.App
 
             var db = cust.GetDatabase();
 
-            NewOrderModel newOrder = new NewOrderModel()
+            NewCustomerModel newCustomer = new NewCustomerModel()
             {
-                CustomerId = 1,
-                Items = new List<NewOrderModel.OrderItem>()
+                Email = "larry@jerrycurl.net",
+                Password = "s€cure",
+                Name = "Larry The Janitor",
+                Street = "2720 36th Ave",
+                City = "San Francisco",
+                Country = "USA",
+                NewOrder = new NewOrderModel()
                 {
-                    new NewOrderModel.OrderItem() { ProductId = 1, Units = 12 },
-                    new NewOrderModel.OrderItem() { ProductId = 1, Units = 3 },
-                    new NewOrderModel.OrderItem() { ProductId = 1, Units = 11 },
-                    new NewOrderModel.OrderItem() { ProductId = 1, Units = 66 },
-                    new NewOrderModel.OrderItem() { ProductId = 1, Units = 1 },
-                    new NewOrderModel.OrderItem() { ProductId = 1, Units = 13 },
+                    Items = new List<NewOrderModel.OrderItem>()
+                    {
+                        new NewOrderModel.OrderItem() { ProductId = 1, Units = 12 },
+                        new NewOrderModel.OrderItem() { ProductId = 1, Units = 3 },
+                        new NewOrderModel.OrderItem() { ProductId = 1, Units = 11 },
+                        new NewOrderModel.OrderItem() { ProductId = 1, Units = 66 },
+                        new NewOrderModel.OrderItem() { ProductId = 1, Units = 1 },
+                        new NewOrderModel.OrderItem() { ProductId = 1, Units = 13 },
+                    }
                 }
             };
 
-            ord.NewOrder(newOrder);
+            cust.NewCustomer(newCustomer);
 
             var stats = cust.GetStats(DateTime.UtcNow.AddDays(-100));
         }

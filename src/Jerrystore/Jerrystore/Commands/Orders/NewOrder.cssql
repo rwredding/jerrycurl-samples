@@ -16,7 +16,7 @@ INNER JOIN
 WHERE
     @c.Col(m => m.Id) = @M.Par(m => m.CustomerId)
 
-DECLARE @@NewAddressId int = SCOPE_IDENTITY()
+DECLARE @@BillingAddressId int = SCOPE_IDENTITY()
 
 INSERT INTO
     @o.TblName()
@@ -28,8 +28,8 @@ INSERT INTO
     VALUES
     (
         @M.Par(m => m.CustomerId),
-        @@NewAddressId,
-        GETUTCDATE()
+        @@BillingAddressId,
+        GETDATE()
     )
 
 DECLARE @@OrderId int = SCOPE_IDENTITY()

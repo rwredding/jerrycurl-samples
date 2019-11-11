@@ -1,0 +1,45 @@
+﻿@model Jerrystore.Models.Customers.NewCustomerModel
+@project Customer c
+@project CustomerAddress ca
+
+INSERT INTO
+    @ca.TblName()
+    (
+        @ca.ColName(m => m.Street),
+        @ca.ColName(m => m.City),
+        @ca.ColName(m => m.Country)
+    )
+    VALUES
+    (
+        @M.Par(m => m.Street),
+        @M.Par(m => m.City),
+        @M.Par(m => m.Country)
+    )
+
+DECLARE @@NewAddressId int = SCOPE_IDENTITY()
+
+INSERT INTO
+    @c.TblName()
+    (
+        @c.ColName(m => m.CreatedDate),
+        @c.ColName(m => m.AddressId),
+        @c.ColName(m => m.Email),
+        @c.ColName(m => m.Password),
+        @c.ColName(m => m.Name)
+    )
+    OUTPUT @c.Col(m => m.Id, "INSERTED") AS @M.Prop(m => m.NewCustomerId)
+    VALUES
+    (
+        GETDATE(),
+        @@NewAddressId,
+        @M.Par(m => m.Email),
+        @M.Par(m => m.Password),
+        @M.Par(m => m.Name)
+    )
+
+@if (this.Model.NewOrder != null)
+{
+    SET @M.Par(m => m.NewOrder.CustomerId) = SCOPE_IDENTITY()
+
+    @M.Subcommand(m => m.NewOrder, "~/Commands/Orders/NewOrder")
+}
