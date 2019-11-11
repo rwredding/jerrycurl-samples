@@ -1,2 +1,3 @@
 ﻿@import Jerrycurl.Mvc.Sql.SqlServer
+@import Jerrystore.Database
 @* add global imports, projections and injections here *@

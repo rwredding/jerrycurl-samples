@@ -1,0 +1,17 @@
+﻿@result Jerrystore.Views.Customers.CustomerStatsView
+@model Jerrystore.Models.Customers.CustomerFilter
+@project Customer c
+@project Order o
+
+SELECT
+    @c.Col(m => m.Name)        AS @R.Prop(m => m.CustomerName),
+    @c.Col(m => m.Email)       AS @R.Prop(m => m.CustomerEmail),
+    (
+        SELECT  COUNT(*)
+        FROM    @o.Tbl()
+        WHERE   @o.Col(m => m.CustomerId) = @c.Col(m => m.Id)
+    )                           AS @R.Prop(m => m.NumberOfOrders)
+FROM
+    @c.Tbl()
+WHERE
+    @c.Col(m => m.CreatedDate) >= @M.Par(m => m.MinAge)

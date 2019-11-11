@@ -1,0 +1,52 @@
+﻿@model Jerrystore.Models.Orders.NewOrderModel
+
+@project Customer c
+@project CustomerAddress ca
+@project Order o
+@project OrderLine ol
+
+INSERT INTO
+    @ca.TblName() ( @ca.In().ColNames() )
+SELECT
+    @ca.In().Cols()
+FROM
+    @ca.Tbl()
+INNER JOIN
+    @c.Tbl() ON @c.Col(m => m.AddressId) = @ca.Col(m => m.Id)
+WHERE
+    @c.Col(m => m.Id) = @M.Par(m => m.CustomerId)
+
+DECLARE @@NewAddressId int = SCOPE_IDENTITY()
+
+INSERT INTO
+    @o.TblName()
+    (
+        @o.ColName(m => m.CustomerId),
+        @o.ColName(m => m.AddressId),
+        @o.ColName(m => m.CreatedDate)
+    )
+    VALUES
+    (
+        @M.Par(m => m.CustomerId),
+        @@NewAddressId,
+        GETUTCDATE()
+    )
+
+DECLARE @@OrderId int = SCOPE_IDENTITY()
+
+@foreach (var it in this.M.Vals(m => m.Items))
+{
+    INSERT INTO
+        @ol.TblName()
+        (
+            @ol.Col(m => m.OrderId),
+            @ol.Col(m => m.ProductId),
+            @ol.Col(m => m.Units)
+        )
+        VALUES
+        (
+            @@OrderId,
+            @it.Par(m => m.ProductId),
+            @it.Par(m => m.Units)
+        )
+}
