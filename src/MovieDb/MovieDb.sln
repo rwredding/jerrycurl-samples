@@ -7,6 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieDb.Data", "MovieDb.Dat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieDb.App", "MovieDb.App\MovieDb.App.csproj", "{76B4C464-F12E-4C1B-9772-78FF48C470F3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{72F4334A-5922-45CB-9BE6-144A1C511551}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "global", "global", "{BC7FCFCC-2E2B-4DA2-9A7C-9A2D54ADC6E5}"
+	ProjectSection(SolutionItems) = preProject
+		README.txt = README.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +31,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{38B965FB-B92D-46AB-B439-BFDDEFA917E5} = {72F4334A-5922-45CB-9BE6-144A1C511551}
+		{76B4C464-F12E-4C1B-9772-78FF48C470F3} = {72F4334A-5922-45CB-9BE6-144A1C511551}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {83441EBC-3560-4D39-8AE8-697490F89808}

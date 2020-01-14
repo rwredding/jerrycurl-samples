@@ -7,4 +7,9 @@
     <PackageReference Include="Jerrycurl" Version="1.0.0" />
     <PackageReference Include="Jerrycurl.Vendors.SqlServer" Version="1.0.0" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Commands\" />
+    <Folder Include="Queries\" />
+  </ItemGroup>
 </Project>

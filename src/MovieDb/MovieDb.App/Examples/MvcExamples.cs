@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MovieDb.App.Examples
 {
-    public static class RelationExamples
+    public static class MvcExamples
     {
 
     }
