@@ -1,0 +1,10 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Jerrycurl" Version="1.0.0" />
+    <PackageReference Include="Jerrycurl.Vendors.SqlServer" Version="1.0.0" />
+  </ItemGroup>
+</Project>
